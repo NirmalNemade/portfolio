@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import GooeyNav from './GooeyNav';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -11,7 +12,7 @@ export default function Navbar() {
             setScrolled(window.scrollY > 50);
 
             // Update active section based on scroll position
-            const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
+            const sections = ['home', 'about', 'skills', 'projects', 'personal-projects', 'experience', 'education', 'contact'];
             const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
@@ -28,14 +29,18 @@ export default function Navbar() {
     }, []);
 
     const navItems = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Education', href: '#education' },
-        { name: 'Contact', href: '#contact' },
+        { label: 'Home', href: '#home' },
+        { label: 'About', href: '#about' },
+        { label: 'Skills', href: '#skills' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Personal', href: '#personal-projects' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Education', href: '#education' },
+        { label: 'Contact', href: '#contact' },
     ];
+
+    // Find the active index based on the current section
+    const activeIndex = navItems.findIndex(item => item.href === `#${activeSection}`);
 
     return (
         <nav
@@ -48,19 +53,17 @@ export default function Navbar() {
                         Nirmal Nemade
                     </a>
 
-                    <div className="hidden md:flex items-center space-x-8">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                className={`text-sm font-medium transition-all duration-300 hover:text-primary ${activeSection === item.href.slice(1)
-                                        ? 'text-primary'
-                                        : 'text-muted-foreground'
-                                    }`}
-                            >
-                                {item.name}
-                            </a>
-                        ))}
+                    <div className="hidden md:flex items-center">
+                        <GooeyNav
+                            items={navItems}
+                            particleCount={15}
+                            particleDistances={[90, 10]}
+                            particleR={100}
+                            initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
+                            animationTime={600}
+                            timeVariance={300}
+                            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+                        />
                     </div>
 
                     <a
