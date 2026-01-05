@@ -7,12 +7,12 @@ export default function PersonalProjects() {
 
     const personalProjects = [
         {
-            title: 'Project Name 1',
-            description: 'A brief description of your deployed project. Explain what problem it solves and what makes it unique.',
-            image: '/projects/project1.png', // Add your project screenshot
-            liveUrl: 'https://your-project-1.vercel.app',
-            githubUrl: 'https://github.com/yourusername/project1',
-            tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+            title: 'AI Text Explainer',
+            description: 'An interactive AI-powered text explanation tool featuring stunning Threads WebGL animation. Instantly understand any text with AI assistance in a beautiful, immersive interface.',
+            image: '/projects/ai-text-explainer.png',
+            liveUrl: 'https://ai-text-explainer-website.vercel.app',
+            githubUrl: 'https://github.com/NirmalNemade/ai-text-explainer-website',
+            tech: ['React', 'Next.js', 'TypeScript', 'Three.js', 'Gemini API', 'Vercel'],
             gradient: 'bg-gradient-purple',
             featured: true
         },
